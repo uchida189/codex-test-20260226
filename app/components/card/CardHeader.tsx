@@ -10,12 +10,12 @@ export function CardHeader({
   onToggleFavorite,
 }: CardHeaderProps) {
   const buttonColorClass = isFavorited
-    ? "border-pink-300 bg-pink-50 text-pink-800 hover:bg-pink-100"
-    : "border-zinc-300 text-zinc-600 hover:bg-zinc-100";
+    ? "border-pink-300 bg-pink-50 text-pink-800 hover:bg-pink-100 dark:border-pink-700 dark:bg-pink-950/60 dark:text-pink-200 dark:hover:bg-pink-900/70"
+    : "border-zinc-300 text-zinc-600 hover:bg-zinc-100 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800";
 
   return (
     <header className="flex items-start justify-between gap-3">
-      <h2 className="text-lg font-semibold tracking-tight text-zinc-900">
+      <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
         {name}
       </h2>
       <button

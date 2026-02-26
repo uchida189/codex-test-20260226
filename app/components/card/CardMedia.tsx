@@ -7,7 +7,7 @@ type CardMediaProps = {
 
 export function CardMedia({ name, imageUrl }: CardMediaProps) {
   return (
-    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50">
+    <div className="overflow-hidden rounded-xl border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800">
       <Image
         src={imageUrl}
         alt={`${name} のイメージ画像`}

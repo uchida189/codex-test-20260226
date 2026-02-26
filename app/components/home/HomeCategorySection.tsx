@@ -13,10 +13,10 @@ export function HomeCategorySection({
   return (
     <section className="space-y-3">
       <div className="flex items-baseline justify-between">
-        <h2 className="text-xl font-semibold tracking-tight text-zinc-900">
+        <h2 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
           {section.category}
         </h2>
-        <p className="text-xs text-zinc-500">{section.cards.length}件</p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">{section.cards.length}件</p>
       </div>
 
       <HomeCardRow cards={section.cards} onToggleFavorite={onToggleFavorite} />

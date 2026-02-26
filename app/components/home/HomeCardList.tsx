@@ -24,10 +24,10 @@ export function HomeCardList() {
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-5 py-10">
       <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
           カテゴリ別店舗サジェスト
         </h1>
-        <p className="text-sm text-zinc-600">
+        <p className="text-sm text-zinc-600 dark:text-zinc-300">
           縦方向にカテゴリを並べ、カテゴリ内は横スクロールでカードを閲覧できます。
         </p>
       </header>
