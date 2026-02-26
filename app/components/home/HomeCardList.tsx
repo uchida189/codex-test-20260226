@@ -1,13 +1,21 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { Card } from "@/app/components/card/Card";
+import { useCallback, useMemo, useState } from "react";
+import { HomeCategorySection } from "@/app/components/home/HomeCategorySection";
 import { toggleFavoriteById } from "@/app/lib/cardInteractions.mjs";
+import {
+  groupCardsByCategory,
+  sortCategoriesForSuggestion,
+} from "@/app/lib/home/groupCardsByCategory.mjs";
 import { initialCards } from "@/app/lib/mock/cards";
 import type { CardData } from "@/app/types/card";
 
 export function HomeCardList() {
   const [cards, setCards] = useState<CardData[]>(initialCards);
+  const sections = useMemo(
+    () => sortCategoriesForSuggestion(groupCardsByCategory(cards)),
+    [cards],
+  );
 
   const handleToggleFavorite = useCallback((id: string) => {
     setCards((prev) => toggleFavoriteById(prev, id));
@@ -16,15 +24,21 @@ export function HomeCardList() {
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-5 py-10">
       <header className="mb-8 space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">店舗カード一覧</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
+          カテゴリ別店舗サジェスト
+        </h1>
         <p className="text-sm text-zinc-600">
-          仕様優先順に沿って、店名・ハート・営業状態・画像・詳細情報を表示します。
+          縦方向にカテゴリを並べ、カテゴリ内は横スクロールでカードを閲覧できます。
         </p>
       </header>
 
-      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card) => (
-          <Card key={card.id} card={card} onToggleFavorite={handleToggleFavorite} />
+      <section className="space-y-10">
+        {sections.map((section) => (
+          <HomeCategorySection
+            key={section.category}
+            section={section}
+            onToggleFavorite={handleToggleFavorite}
+          />
         ))}
       </section>
     </main>
